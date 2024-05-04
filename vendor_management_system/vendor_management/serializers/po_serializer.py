@@ -17,5 +17,7 @@ class PurchaseOrderSerializer(serializers.ModelSerializer):
             'status',
             'quality_rating',
             'issue_date',
-            'acknowledgment_date'
+            'acknowledgment_date',
+            'completion_date',
         ]
+        read_only_fields = ['completion_date']

@@ -1,5 +1,6 @@
 from rest_framework import permissions
 from rest_framework import generics
+from rest_framework import mixins
 
 from ..models import Vendor
 from ..serializers.vendor_serializer import VendorSerializer
@@ -15,7 +16,8 @@ class VendorList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class VendorDetail(generics.RetrieveUpdateDestroyAPIView):
+class VendorDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
+                   generics.GenericAPIView):
     """
     Retrieve, update or delete a vendor profile.
     """
@@ -28,15 +30,13 @@ class VendorDetail(generics.RetrieveUpdateDestroyAPIView):
         vendor_code = self.kwargs.get('vendor_code')
         return Vendor.objects.filter(vendor_code=vendor_code)
 
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
 
-class VendorPerformance(generics.ListAPIView):
-    """
-    Retrieve historical performance of a vendor.
-    """
+    def put(self, request, *args, **kwargs):
+        # Allowing partial updates in PUT request
+        kwargs['partial'] = True
+        return self.partial_update(request, *args, **kwargs)
 
-    serializer_class = HistoricalPerformanceSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        vendor_code = self.kwargs.get('vendor_code')
-        return Vendor.objects.filter(vendor_code=vendor_code)
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
