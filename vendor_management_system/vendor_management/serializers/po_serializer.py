@@ -3,6 +3,10 @@ from ..models import *
 
 
 class PurchaseOrderSerializer(serializers.ModelSerializer):
+    """
+    Serializer class for the PurchaseOrder model.
+
+    """
 
     class Meta:
         model = PurchaseOrder

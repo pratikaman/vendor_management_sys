@@ -9,8 +9,11 @@ from .models import PurchaseOrder, HistoricalPerformance
 
 @receiver(post_save, sender=PurchaseOrder)
 def on_time_delivery_rate(sender, instance, created, **kwargs):
+    """
+    Signal to calculate and update the on-time delivery rate for a vendor when a PurchaseOrder is saved.
+
+    """
     if instance.tracker.has_changed('status') and instance.status == 'completed':
-        #
         vendor = instance.vendor
 
         completed_purchase_orders = vendor.purchaseorder_set.filter(status='completed')
@@ -24,6 +27,10 @@ def on_time_delivery_rate(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=PurchaseOrder)
 def quality_rating_avg(sender, instance, created, **kwargs):
+    """
+    Signal to calculate and update the average quality rating for a vendor when a PurchaseOrder is saved.
+
+    """
     if instance.tracker.has_changed('status') and instance.status == 'completed':
         vendor = instance.vendor
 
@@ -37,6 +44,10 @@ def quality_rating_avg(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=PurchaseOrder)
 def average_response_time(sender, instance, created, **kwargs):
+    """
+    Signal to calculate and update the average response time for a vendor when a PurchaseOrder is saved.
+
+    """
     if instance.tracker.has_changed('acknowledgment_date') and instance.acknowledgment_date is not None:
         vendor = instance.vendor
 
@@ -53,6 +64,10 @@ def average_response_time(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=PurchaseOrder)
 def fulfilment_rate(sender, instance, created, **kwargs):
+    """
+    Signal to calculate and update the fulfilment rate for a vendor when a PurchaseOrder is saved.
+
+    """
     if instance.tracker.has_changed('status'):
         vendor = instance.vendor
 
@@ -65,6 +80,10 @@ def fulfilment_rate(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=PurchaseOrder)
 def create_historical_performance(sender, instance, created, **kwargs):
+    """
+    Signal to create a HistoricalPerformance record for a vendor when a PurchaseOrder is changed.
+
+    """
     if instance.tracker.changed():
         vendor = instance.vendor
 

@@ -5,6 +5,15 @@ from ..models import *
 
 
 class HistoricalPerformanceSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the HistoricalPerformance model.
+
+    The vendor field is serialized using the VendorSerializer.
+
+    The other fields are read-only and are calculated based on the data in the HistoricalPerformance model.
+
+    """
+
     vendor = VendorSerializer()
     on_time_delivery_rate = serializers.DecimalField(decimal_places=2, max_digits=5, read_only=True)
     quality_rating_avg = serializers.DecimalField(decimal_places=2, max_digits=5, read_only=True)
