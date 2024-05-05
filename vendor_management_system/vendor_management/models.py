@@ -22,6 +22,8 @@ class Vendor(models.Model):
         return self.vendor_code
 
 
+
+
 class PurchaseOrder(models.Model):
     STATUS_CHOICES = (
         ('pending', 'Pending'),

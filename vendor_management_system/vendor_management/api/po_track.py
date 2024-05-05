@@ -15,19 +15,6 @@ class PurchaseOrderList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
-# class PurchaseOrderDetail(generics.RetrieveUpdateDestroyAPIView):
-#     """
-#     Retrieve, update or delete a purchase order.
-#     """
-#
-#     lookup_field = 'po_number'
-#     serializer_class = PurchaseOrderSerializer
-#     permission_classes = [permissions.IsAuthenticated]
-#
-#     def get_queryset(self):
-#         po_number = self.kwargs.get('po_number')
-#         return PurchaseOrder.objects.filter(po_number=po_number)
-
 class PurchaseOrderDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
                           generics.GenericAPIView):
     """

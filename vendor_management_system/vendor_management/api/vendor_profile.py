@@ -4,7 +4,6 @@ from rest_framework import mixins
 
 from ..models import Vendor
 from ..serializers.vendor_serializer import VendorSerializer
-from ..serializers.performance_serializer import HistoricalPerformanceSerializer
 
 
 class VendorList(generics.ListCreateAPIView):

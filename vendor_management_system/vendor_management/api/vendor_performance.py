@@ -7,7 +7,7 @@ from ..serializers.vendor_serializer import VendorPerformanceSerializer
 
 class VendorPerformance(generics.ListAPIView):
     """
-    List all vendor performance.
+    List all the performance metrics a vendor.
     """
 
     lookup_field = 'vendor_code'

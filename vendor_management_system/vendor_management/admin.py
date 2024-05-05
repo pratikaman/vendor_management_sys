@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import *
+from rest_framework.authtoken.admin import TokenAdmin
+
 
 # Register your models here.
 
@@ -20,5 +22,16 @@ class PurchaseOrderAdmin(admin.ModelAdmin):
 
 @admin.register(HistoricalPerformance)
 class HistoricalPerformanceAdmin(admin.ModelAdmin):
-    list_display = ['vendor']
+    list_display = ['vendor', 'date']
     search_fields = ['vendor__vendor_code', 'vendor__name']
+    readonly_fields = [
+        'vendor',
+        'date',
+        'on_time_delivery_rate',
+        'quality_rating_avg',
+        'average_response_time',
+        'fulfillment_rate',
+    ]
+
+
+TokenAdmin.raw_id_fields = ['user']
