@@ -77,7 +77,9 @@ create_dummy_vendors()
 - In the body of request send as following:
 	- *username*: "user-name",
 	- *password*: "user-password"
-- send the generated token in each api request using `Authorization` HTTP header
+- Response will be a token.
+	- ex- `{"token": "994b09199c62bcf9418ad846dd0eewffc6ee4b"}`
+- Send the generated token in each api request using `Authorization` HTTP header
 		- ex- `Authorization: Token 994b09199c62bcf9418ad846dd0eewffc6ee4b`
 
 *All the apis also support session authentication. 
