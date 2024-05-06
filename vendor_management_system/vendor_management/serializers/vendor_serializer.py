@@ -16,6 +16,7 @@ class VendorSerializer(serializers.ModelSerializer):
             'address',
             'vendor_code',
         ]
+        read_only_fields = ['vendor_code']
 
 
 class VendorPerformanceSerializer(serializers.ModelSerializer):

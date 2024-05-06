@@ -1,4 +1,6 @@
 from datetime import datetime
+from random import randint
+import re
 
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -18,10 +20,20 @@ class Vendor(models.Model):
     average_response_time = models.FloatField(default=0)
     fulfillment_rate = models.FloatField(default=0)
 
+    def save(self, *args, **kwargs):
+
+        vendor_name = str(self.name).strip().split(" ")[0]
+
+        truncated_name = re.sub(r'[aeiouAEIOU]', '', vendor_name)
+
+        vendor_code = f"{truncated_name}{self.contact_details[-3:]}{randint(1, 9)}".upper()
+
+        self.vendor_code = vendor_code
+
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.vendor_code
-
-
 
 
 class PurchaseOrder(models.Model):
