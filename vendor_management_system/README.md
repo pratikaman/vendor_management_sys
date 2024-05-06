@@ -84,10 +84,9 @@ create_dummy_vendors()
 - To create a new vendor.
 	- make POST request to `/api/vendors/` 
 	- In the body of request send as following:
-
-		*name*: "Rahul",
-        *contact_details* : "123456789",
-        *address*: "xyz",
+		- *name*: "Rahul",
+	    - *contact_details* : "123456789",
+        - *address*: "xyz",
 
 - List all vendors.
 	- make GET request to  `/api/vendors/`
@@ -97,44 +96,46 @@ create_dummy_vendors()
 	- make PUT request to `/api/vendors/{vendor_id}/`
 	- In the body of request send details that needs to be updated as following:
 		
-		Example- if *address* and *contact_details* needs to be updated
-        *address*: "hsr layout, bangalore",
-        *contact_details*: "987654321"
+		Example- if *address* and *contact_details* needs to be updated-
+	    - *address*: "hsr layout, bangalore",
+        - *contact_details*: "987654321"
         
 - Delete a vendor.
 	- make DELETE request to `/api/vendors/{vendor_id}/`
 
 ### Purchase Order Tracking
 
-- Create a purchase order.
+ - Create a purchase order.
 	- make POST request to `/api/purchase_orders/`
 	- In the body of request send as following:
 			
-		*po_number*: 1234566,
-		    *vendor*: RHL6789,
-		    *order_date*: "2024-05-04T12:19:14Z",
-		    *delivery_date*: "2024-08-04T12:19:14Z",
-		    *items*: {
+		- *po_number*: 1234566,
+		- *vendor*: RHL6789,
+		- *order_date*: "2024-05-04T12:19:14Z",
+		- *delivery_date*: "2024-08-04T12:19:14Z",
+		- *items*: {
 						   "fruits":  "apples"
 					    },
-		    *quantity*: 5,
-		    *status*: pending,
-		    *quality_rating*: 2, ***Can be null**.
-		    *issue_date*: "2024-05-04T12:19:14Z",
-		    *acknowledgment_date*: "2024-07-04T12:19:14Z" **#Can be null.**  
+		 - *quantity*: 5,
+		 - *status*: pending,
+		 - *quality_rating*: 2, **Can be null**.
+		 - *issue_date*: "2024-05-04T12:19:14Z",
+		 - *acknowledgment_date*: "2024-07-04T12:19:14Z" **#Can be null.**  
 		
 
-- List all purchase orders with an option to filter by vendor.
+ - List all purchase orders with an option to filter by vendor.
 	- make GET request to `/api/purchase_orders/`
-- Retrieve details of a specific purchase order.
+ - Retrieve details of a specific purchase order.
 	- make GET request to `/api/purchase_orders/{po_id}/`
-- Update a purchase order.
+ - Update a purchase order.
 	- make PUT request to `/api/purchase_orders/{po_id}/`
 	-  In the body of request send details that needs to be updated as following:
 
-	Example- if *quantity* and *status* needs to be updated
-			*quantity*: 3,
-		    *status*: completed,
+	Example- if *quantity* and *status* needs to be updated:
+	
+	- *quantity*: 3,
+	- *status*: completed,
+
 		    
 - Delete a purchase order.
 	- make DELETE request to `/api/purchase_orders/{po_id}/`
