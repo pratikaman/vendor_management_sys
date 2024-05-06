@@ -74,10 +74,15 @@ create_dummy_vendors()
 
 ### To generate auth token via api. 
 - POST `/api/api-token-auth/`
+- In the body of request send as following:
+	- *username*: "user-name",
+	- *password*: "user-password"
 - send the generated token in each api request using `Authorization` HTTP header
 		- ex- `Authorization: Token 994b09199c62bcf9418ad846dd0eewffc6ee4b`
 
-*All the apis also support session authentication.*
+*All the apis also support session authentication. 
+So while accessing these API endpoints using browser we can login there using user credentials.
+New user credentials can be created using django admin.*
 
 ### Vendor Profile Management
 

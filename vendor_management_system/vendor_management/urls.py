@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from .api.po_acknowledge import PurchaseOrderAcknowledgement
 from .api.vendor_profile import VendorList, VendorDetail
@@ -19,4 +19,8 @@ urlpatterns = [
 
 urlpatterns += [
     path('api-token-auth/', views.obtain_auth_token)
+]
+
+urlpatterns += [
+    path('api-auth/', include('rest_framework.urls')),
 ]
