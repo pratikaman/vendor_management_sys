@@ -17,10 +17,6 @@ class PurchaseOrderAcknowledgement(APIView):
     If the purchase order has already been acknowledged, an error message will be returned.
     The acknowledgment date will be set to the current date and time.
 
-    Methods:
-    - get_object(po_number): Retrieves the purchase order object based on the provided purchase order number.
-    - post(request, po_number): Handles the POST request to acknowledge a purchase order.
-
     """
 
     permission_classes = [permissions.IsAuthenticated]
