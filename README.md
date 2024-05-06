@@ -48,7 +48,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Create super user to access admin package
+Create super user to access admin page.
 ```
 python manage.py createsuperuser
 ```
